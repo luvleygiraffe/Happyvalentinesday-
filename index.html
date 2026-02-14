@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flores con Amor</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0a0f2c, #000);
+  font-family: Arial, sans-serif;
+}
+
+/* Estrellas */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* Corazones flotando */
+.heart {
+  position: absolute;
+  color: pink;
+  font-size: 20px;
+  animation: floatUp 10s linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(100vh) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Flores */
+.flower {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+.flower span {
+  font-size: 60px;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 5px pink); }
+  to { filter: drop-shadow(0 0 20px hotpink); }
+}
+
+.message {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  color: #ffc0cb;
+  font-size: 28px;
+  text-shadow: 0 0 10px pink;
+}
+</style>
+</head>
+
+<body>
+
+<div class="message">Feliz Día de San Valentín 💖</div>
+
+<div class="flower">
+  <span>🌸🌸🌸</span>
+</div>
+
+<script>
+
+/* Crear estrellas */
+for (let i = 0; i < 100; i++) {
+  let star = document.createElement("div");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "vw";
+  star.style.top = Math.random() * 100 + "vh";
+  star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+  document.body.appendChild(star);
+}
+
+/* Crear corazones */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
+}, 500);
+
+</script>
+
+</body>
+  </html>
